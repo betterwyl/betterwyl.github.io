@@ -5,7 +5,6 @@
 <p><strong>Occlusion-Aware Proposal Refinement【plus】</strong><br>将P（OS）【转化到笛卡尔坐标系，位于这个笛卡尔体素中的最大的P ( O S )来作为这个体素的概率】到RPN的各层feature中→feature拼接→ROI pooling→优化的bbox<br>我的想法：在小目标检测性能较好，感觉就是那个作者的假设起了作用。【强制小目标是镜像对称的，然后补全】尽管目标被遮挡，但通过前景以及已有先验信息，就能补全behind信息。。。</p>
 <h2 id="Dynamic-Hypergraph-Neural-Networks-IJCAI2019"><a href="#Dynamic-Hypergraph-Neural-Networks-IJCAI2019" class="headerlink" title="Dynamic Hypergraph Neural Networks IJCAI2019"></a>Dynamic Hypergraph Neural Networks IJCAI2019</h2><p><strong>DHGNN关键点：</strong><br>动态超图构建（DHG）和超图卷积（HGC）<br><strong>HGNN整个文章关键点</strong>：如何生成超边<br>一个点取他周围的邻居点K个，形成一条由K+1个点的超边。【此处信息会存在较大冗余，因为一个小区域内，邻居重合度大。是一个改进的点】<br><strong>1.    DHG动态超图构建</strong><br>利用 KNN 方法和 k-means 聚类方法在单个推理过程中分别基于局部【生成超边】和全局特征【生成超图结构】更新超图结构。<br>生成超边KNN:每个顶点的 k-1 个最近邻。近邻顶点与顶点中形成一条超边。【这条超边包含了k个点】<br>超图结构k-means：每一层的整个特征图欧式距离。每个顶点最近的 S-1 个将被指定为该顶点的相邻超边。【这个地方是不是在已有的超边上进行操作。顺序是先初始化超图的。】<br>使用输入特征嵌入来初始化超图结构。特征嵌入随着网络的深入而演变，超边集是动态调整的。<br><img src="/2022/11/12/vnietest/1.png" alt="DHG"></p>
 <p><strong>2.    HGC超图卷积</strong><br>顶点卷积：【常用池化的方法】变换矩阵来置换和加权超边中的顶点；<br>MLP 来生成变换矩阵 T，并使用一维卷积来压缩变换后的特征。<br>超边卷积：超边卷积中采用了注意机制，使用多层感知 (MLP) 来生成每个超边的权重分数。输出质心顶点特征计算为输入超边特征的加权和。<br>【顶点卷积后→Hyperedge Convolution EdgeConv 将相邻的超边特征聚合为顶点的特征。激活函数再更新。特征嵌入更新顶点特征→构建一个新的超图结构。】</p>
-<p><img src="/2022/11/12/vnietest/2.png" alt="HGC"></p>
 <img src="/2022/11/12/vnietest/2.png" class title="This is an example image">
 
 <p>实验部分：使用的是社交网络的数据集。</p>
