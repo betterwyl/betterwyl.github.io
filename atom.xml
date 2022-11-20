@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2022-11-14T02:05:08.619Z</updated>
+  <updated>2022-11-20T14:24:32.001Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Inductive link prediction in knowledge graph——A survey</title>
+    <link href="https://betterwyl.github.io/2022/11/20/survey/"/>
+    <id>https://betterwyl.github.io/2022/11/20/survey/</id>
+    <published>2022-11-20T14:21:39.000Z</published>
+    <updated>2022-11-20T14:24:32.001Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div class="row">    <embed src="mydocument.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="专业硕士工程英语" scheme="https://betterwyl.github.io/tags/%E4%B8%93%E4%B8%9A%E7%A1%95%E5%A3%AB%E5%B7%A5%E7%A8%8B%E8%8B%B1%E8%AF%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>11.12讨论</title>
