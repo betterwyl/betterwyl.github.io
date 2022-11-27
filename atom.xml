@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2022-11-27T03:46:45.785Z</updated>
+  <updated>2022-11-27T03:54:44.707Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -17,13 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Graph】DGCNN</title>
+    <title>【Graph】coding指南</title>
     <link href="https://betterwyl.github.io/2022/11/27/DGCNN/"/>
     <id>https://betterwyl.github.io/2022/11/27/DGCNN/</id>
     <published>2022-11-27T03:43:22.000Z</published>
-    <updated>2022-11-27T03:46:45.785Z</updated>
+    <updated>2022-11-27T03:54:44.707Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="DGCNN【coding指南】"><a href="#DGCNN【coding指南】" class="headerlink" title="DGCNN【coding指南】"></a>DGCNN【coding指南】</h1><h2 id="处理-转换"><a href="#处理-转换" class="headerlink" title="处理/转换"></a>处理/转换</h2><p>knn()</p><p>transpose()函数的作用就是调换数组的行列值的索引值，类似于求矩阵的转置。</p><p>torch.matmul(x.transpose(2, 1), x)矩阵相乘</p><p>eg.不同维度会进行补全再相加，如下实例【xx 112 第二行重复→122 xx’ 121第二列重复→122】</p><img src="/2022/11/27/DGCNN/Users\vniew\AppData\Roaming\Typora\typora-user-images\image-20221122093034282.png" alt="image-20221122093034282" style="zoom:67%;"><p>torch.topk(k=k,dim=?)  使用&amp;关于dim的解释：</p><p><code>torch.topk(input, k, dim=None, largest=True, sorted=True, out=None)</code></p><p>return 一个元组 (values,indices)</p><p><code>b = torch.tensor([[[3, 2], [1, 4]],[[5, 6], [7, 8]]])#张量[[[ 0(-3),1(-2),2(-1) ]]]</code></p><p>get_graph_feature()</p><p>view()：返回一个有相同数据但大小不同的tensor。 返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。【改变张量的shape的】</p><img src="/2022/11/27/DGCNN/Users\vniew\AppData\Roaming\Typora\typora-user-images\image-20221122102906114.png" alt="image-20221122102906114" style="zoom:50%;"><p>idx_base = torch.arange(0, batch_size, device=device).view(-1, 1, 1)*num_points</p><p>每一个batch_size里的点被展平成一维张量</p><p><img src="/2022/11/27/DGCNN/C:%5CUsers%5Cvniew%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221127111926049.png" alt="image-20221127111926049"></p><h3 id="操作总结"><a href="#操作总结" class="headerlink" title="操作总结"></a>操作总结</h3><p>1.view(*args) → Tensor返回一个有相同数据但大小不同的tensor。<br>    返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。<br>    一个tensor必须是连续的contiguous()才能被查看。</p><p>2.contiguous() → Tensor返回一个内存连续的有相同数据的tensor，如果原tensor内存连续则返回原tensor</p><p>3.is_contiguous() → Bool如果该tensor在内存中是连续的则返回True。</p><p>1.transpose(维度的索引值, 维度的索引值) 和 view(维度值, 维度值) 之间的前后调用顺序<br>  因为view进行维度变换之后也不会改变元素值的顺序存储结构，而transpose进行维度变换之后会改变元素值的顺序存储结构。<br>    1.view(维度值, 维度值).transpose(维度的索引值, 维度的索引值)<br>        先view后transpose的话，两者中间无需调用contiguous()。<br>    2.transpose(维度的索引值, 维度的索引值).contiguous().view(维度值, 维度值)<br>        先transpose后view的话，两者中间需要调用contiguous()。<br>    3.contiguous()的作用<br>        返回一个内存连续的有相同数据的tensor，如果原tensor内存连续则返回原tensor。<br>        也就是说contiguous()便可以把经过了transpose或t()操作的tensor重新处理为具有内存连续的并且数据值并没有改动的tensor。</p><p>2.x = x.transpose(2, 1).contiguous().viewbatch_size, num_points, num_dims)</p><p>feature = x.view(batch_size*num_points, -1)[idx, :]      *这样的操作方便直接提取</p><p>输入的x的形状为[batch_size, num_points, num_dims]，<br>先执行x.transpose(2, 1)<br>然后因为先执行transpose后执行view的话，两者中间先要执行contiguous。 (batch_size, num_points, num_dims)  -&gt; (batch_size<em>num_points, num_dims) #  batch_size * num_points * k + range(0, batch_size</em>num_points)</p><p>3.x = x.view(batch_size, num_points, 1, num_dims).repeat(1, 1, k, 1)        </p><p>view不会改变内存中元素存储的顺序，对第三维度进行k拓展</p><p>4.feature = torch.cat((feature-x, x), dim=3).permute(0, 3, 1, 2).contiguous()</p><p>整合局部特征和相对特征</p><h2 id="class-DGCNN"><a href="#class-DGCNN" class="headerlink" title="class DGCNN"></a>class DGCNN</h2><p><img src="/2022/11/27/DGCNN/D:%5Cvnieblog%5Csource_posts%5Cimage2.png" alt="image-20221127113927991"></p><p>可对应论文中的图</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="DGCNN"><a href="#DGCNN" class="headerlink" title="DGCNN"></a>DGCNN</h1><h2 id="处理-转换"><a href="#处理-转换" class="headerlink" title="处理/转换"></a>处理/转换</h2><p>knn()</p><p>transpose()函数的作用就是调换数组的行列值的索引值，类似于求矩阵的转置。</p><p>torch.matmul(x.transpose(2, 1), x)矩阵相乘</p><p>eg.不同维度会进行补全再相加，如下实例【xx 112 第二行重复→122 xx’ 121第二列重复→122】</p><img src="/2022/11/27/DGCNN/1.png" class title="This is an example image"><p>torch.topk(k=k,dim=?)  使用&amp;关于dim的解释：</p><p><code>torch.topk(input, k, dim=None, largest=True, sorted=True, out=None)</code></p><p>return 一个元组 (values,indices)</p><p><code>b = torch.tensor([[[3, 2], [1, 4]],[[5, 6], [7, 8]]])#张量[[[ 0(-3),1(-2),2(-1) ]]]</code></p><p>get_graph_feature()</p><p>view()：返回一个有相同数据但大小不同的tensor。 返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。【改变张量的shape的】</p><img src="/2022/11/27/DGCNN/3.png" class title="This is an example image"><p>idx_base = torch.arange(0, batch_size, device=device).view(-1, 1, 1)*num_points</p><p>每一个batch_size里的点被展平成一维张量</p><img src="/2022/11/27/DGCNN/4.png" class title="This is an example image"><h3 id="操作总结"><a href="#操作总结" class="headerlink" title="操作总结"></a>操作总结</h3><p>1.view(*args) → Tensor返回一个有相同数据但大小不同的tensor。<br>    返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。<br>    一个tensor必须是连续的contiguous()才能被查看。</p><p>2.contiguous() → Tensor返回一个内存连续的有相同数据的tensor，如果原tensor内存连续则返回原tensor</p><p>3.is_contiguous() → Bool如果该tensor在内存中是连续的则返回True。</p><p>1.transpose(维度的索引值, 维度的索引值) 和 view(维度值, 维度值) 之间的前后调用顺序<br>  因为view进行维度变换之后也不会改变元素值的顺序存储结构，而transpose进行维度变换之后会改变元素值的顺序存储结构。<br>    1.view(维度值, 维度值).transpose(维度的索引值, 维度的索引值)<br>        先view后transpose的话，两者中间无需调用contiguous()。<br>    2.transpose(维度的索引值, 维度的索引值).contiguous().view(维度值, 维度值)<br>        先transpose后view的话，两者中间需要调用contiguous()。<br>    3.contiguous()的作用<br>        返回一个内存连续的有相同数据的tensor，如果原tensor内存连续则返回原tensor。<br>        也就是说contiguous()便可以把经过了transpose或t()操作的tensor重新处理为具有内存连续的并且数据值并没有改动的tensor。</p><p>2.x = x.transpose(2, 1).contiguous().viewbatch_size, num_points, num_dims)</p><p>feature = x.view(batch_size*num_points, -1)[idx, :]      *这样的操作方便直接提取</p><p>输入的x的形状为[batch_size, num_points, num_dims]，<br>先执行x.transpose(2, 1)<br>然后因为先执行transpose后执行view的话，两者中间先要执行contiguous。 (batch_size, num_points, num_dims)  -&gt; (batch_size<em>num_points, num_dims) #  batch_size * num_points * k + range(0, batch_size</em>num_points)</p><p>3.x = x.view(batch_size, num_points, 1, num_dims).repeat(1, 1, k, 1)        </p><p>view不会改变内存中元素存储的顺序，对第三维度进行k拓展</p><p>4.feature = torch.cat((feature-x, x), dim=3).permute(0, 3, 1, 2).contiguous()</p><p>整合局部特征和相对特征</p><h2 id="class-DGCNN"><a href="#class-DGCNN" class="headerlink" title="class DGCNN"></a>class DGCNN</h2><img src="/2022/11/27/DGCNN/image2.png" class title="This is an example image"><p>可对应论文中的图</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="code已复现备注" scheme="https://betterwyl.github.io/tags/code%E5%B7%B2%E5%A4%8D%E7%8E%B0%E5%A4%87%E6%B3%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【HyperGraph】</title>
+    <link href="https://betterwyl.github.io/2022/11/22/DGCNN%20-%20%E5%89%AF%E6%9C%AC/"/>
+    <id>https://betterwyl.github.io/2022/11/22/DGCNN%20-%20%E5%89%AF%E6%9C%AC/</id>
+    <published>2022-11-22T02:43:22.000Z</published>
+    <updated>2022-11-27T03:54:39.191Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="更新呢"><a href="#更新呢" class="headerlink" title="更新呢"></a>更新呢</h1>]]></content>
     
     
       
