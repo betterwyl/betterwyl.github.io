@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Yulin,Wang"><title>【Graph】DGCNN · Betterwyl</title><meta name="description" content="DGCNN【coding指南】处理/转换knn()
+transpose()函数的作用就是调换数组的行列值的索引值，类似于求矩阵的转置。
+torch.matmul(x.transpose(2, 1), x)矩阵相乘
+eg.不同维度会进行补全再相加，如下实例【xx 112 第二行重复→122 xx’ 1"><meta name="keywords" content="Recording"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 4.2.1"></head><body><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:170px;" alt="favicon"><h3 title=""><a href="/">Betterwyl</a></h3><div class="description"><p>The man is lazy, nothing left.  /  review&query</p></div></div></div></div><ul class="social-links"><li><a href="https://github.com/betterwyl" target="_blank" rel="noopener"><i class="fa fa-github"></i></a></li><li><a href="yulinwang@mail.ustc.edu.cn"><i class="fa fa-envelope"></i></a></li></ul><div class="footer"><div class="p"> <span>© 2020 </span><i class="fa fa-star"></i><span> Yulin,Wang</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><a href="https://github.com/mrcore/hexo-theme-Anatole-Core" target="_blank">Anatole-Core  </a></div></div></div><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/about">About me</a></li><li> <a href="/">Article List</a></li><li> <a href="/archives">Repository</a></li><li> <a href="/tags">Tags List</a></li><li> <a href="/guestbook">Guest book</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>【Graph】DGCNN</a></h3></div><div class="post-content"><h1 id="DGCNN【coding指南】"><a href="#DGCNN【coding指南】" class="headerlink" title="DGCNN【coding指南】"></a>DGCNN【coding指南】</h1><h2 id="处理-转换"><a href="#处理-转换" class="headerlink" title="处理/转换"></a>处理/转换</h2><p>knn()</p>
+<p>transpose()函数的作用就是调换数组的行列值的索引值，类似于求矩阵的转置。</p>
+<p>torch.matmul(x.transpose(2, 1), x)矩阵相乘</p>
+<p>eg.不同维度会进行补全再相加，如下实例【xx 112 第二行重复→122 xx’ 121第二列重复→122】</p>
+<img src="/2022/11/27/DGCNN/Users\vniew\AppData\Roaming\Typora\typora-user-images\image-20221122093034282.png" alt="image-20221122093034282" style="zoom:67%;">
+
+<p>torch.topk(k=k,dim=?)  使用&amp;关于dim的解释：</p>
+<p><code>torch.topk(input, k, dim=None, largest=True, sorted=True, out=None)</code></p>
+<p>return 一个元组 (values,indices)</p>
+<p><code>b = torch.tensor([[[3, 2], [1, 4]],[[5, 6], [7, 8]]])#张量[[[ 0(-3),1(-2),2(-1) ]]]</code></p>
+<p>get_graph_feature()</p>
+<p>view()：返回一个有相同数据但大小不同的tensor。 返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。【改变张量的shape的】</p>
+<img src="/2022/11/27/DGCNN/Users\vniew\AppData\Roaming\Typora\typora-user-images\image-20221122102906114.png" alt="image-20221122102906114" style="zoom:50%;">
+
+<p>idx_base = torch.arange(0, batch_size, device=device).view(-1, 1, 1)*num_points</p>
+<p>每一个batch_size里的点被展平成一维张量</p>
+<p><img src="/2022/11/27/DGCNN/C:%5CUsers%5Cvniew%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20221127111926049.png" alt="image-20221127111926049"></p>
+<h3 id="操作总结"><a href="#操作总结" class="headerlink" title="操作总结"></a>操作总结</h3><p>1.view(*args) → Tensor返回一个有相同数据但大小不同的tensor。<br>    返回的tensor必须有与原tensor相同的数据和相同数目的元素，但可以有不同的大小。<br>    一个tensor必须是连续的contiguous()才能被查看。</p>
+<p>2.contiguous() → Tensor返回一个内存连续的有相同数据的tensor，如果原tensor内存连续则返回原tensor</p>
+<p>3.is_contiguous() → Bool如果该tensor在内存中是连续的则返回True。</p>
+<p>1.transpose(维度的索引值, 维度的索引值) 和 view(维度值, 维度值) 之间的前后调用顺序<br>  因为view进行维度变换之后也不会改变元素值的顺序存储结构，而transpose进行维度变换之后会改变元素值的顺序存储结构。<br>    1.view(维度值, 维度值).transpose(维度的索引值, 维度的索引值)<br>        先view后transpose的话，两者中间无需调用contiguous()。<br>    2.transpose(维度的索引值, 维度的索引值).contiguous().view(维度值, 维度值)<br>        先transpose后view的话，两者中间需要调用contiguous()。<br>    3.contiguous()的作用<br>        返回一个内存连续的有相同数据的tensor，如果原tensor内存连续则返回原tensor。<br>        也就是说contiguous()便可以把经过了transpose或t()操作的tensor重新处理为具有内存连续的并且数据值并没有改动的tensor。</p>
+<p>2.x = x.transpose(2, 1).contiguous().viewbatch_size, num_points, num_dims)</p>
+<p>feature = x.view(batch_size*num_points, -1)[idx, :]      *这样的操作方便直接提取</p>
+<p>输入的x的形状为[batch_size, num_points, num_dims]，<br>先执行x.transpose(2, 1)<br>然后因为先执行transpose后执行view的话，两者中间先要执行contiguous。 (batch_size, num_points, num_dims)  -&gt; (batch_size<em>num_points, num_dims) #  batch_size * num_points * k + range(0, batch_size</em>num_points)</p>
+<p>3.x = x.view(batch_size, num_points, 1, num_dims).repeat(1, 1, k, 1)        </p>
+<p>view不会改变内存中元素存储的顺序，对第三维度进行k拓展</p>
+<p>4.feature = torch.cat((feature-x, x), dim=3).permute(0, 3, 1, 2).contiguous()</p>
+<p>整合局部特征和相对特征</p>
+<h2 id="class-DGCNN"><a href="#class-DGCNN" class="headerlink" title="class DGCNN"></a>class DGCNN</h2><p><img src="/2022/11/27/DGCNN/D:%5Cvnieblog%5Csource_posts%5Cimage2.png" alt="image-20221127113927991"></p>
+<p>可对应论文中的图</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-11-27</span><i class="fa fa-tag"></i><a class="tag" href="/tags/code已复现备注/" title="code已复现备注">code已复现备注 </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://betterwyl.github.io/2022/11/27/DGCNN/,Betterwyl,【Graph】DGCNN,;" target="_blank" rel="noopener"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2022/11/20/survey/" title="Inductive link prediction in knowledge graph——A survey">Próximo post</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@latest/dist/Valine.min.js"></script><script>var valine = new Valine({
+  el:'#vcomments',
+  notify:false || false, 
+  verify:false|| false, 
+  app_id:'xHB6JST92sP5ORC9WNZ7DwXX-gzGzoHsz',
+  app_key:'cqHNrhvssKtJ6KzZLln1xtVv',
+  placeholder:'...',
+  path: window.location.pathname,
+  serverURLs: '',
+  visitor:true,
+  recordIP:true,
+  avatar:'mp'
+})</script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script src="/js/baidu-tongji.js"></script></body></html>
