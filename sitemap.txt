@@ -1,3 +1,4 @@
+https://betterwyl.github.io/2023/04/16/mywork/
 https://betterwyl.github.io/2023/03/30/CS224/
 https://betterwyl.github.io/2023/04/02/debug%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97/
 https://betterwyl.github.io/2023/04/02/motivation%20pose%20estimation/
@@ -33,3 +34,4 @@ https://betterwyl.github.io/tags/Workshop-%EF%BC%88%E5%B0%8F%E7%BE%A4%E8%AE%A8%E
 https://betterwyl.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%90Radar%E3%80%91/
 https://betterwyl.github.io/tags/Workshop/
 https://betterwyl.github.io/tags/Course/
+https://betterwyl.github.io/tags/workshop/
