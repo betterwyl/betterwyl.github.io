@@ -18,13 +18,13 @@
 <p>input：polar range-beam-Doppler tensor </p>
 <p>backbone：【ResNet】</p>
 <p>关于节点和边的设置：</p>
-<p><img src="/2023/12/16/radarwork/image-20221201215913364.png" alt="image-20221201215913364"></p>
+<p><img src="/2022/12/16/radarwork/image-20221201215913364.png" alt="image-20221201215913364"></p>
 <p>设计的GTR-Net：</p>
 <p>两个连续GCN卷积层 输出转换回三维张量并使用金字塔ResNet进一步处理</p>
 <p>【权重设置了对照 ：①全部设置1；②根据笛卡尔空间的欧式距离计算权重】</p>
-<p><img src="/2023/12/16/radarwork/image-20221201215931855.png" alt="image-20221201215931855"></p>
+<p><img src="/2022/12/16/radarwork/image-20221201215931855.png" alt="image-20221201215931855"></p>
 <p>数据集是自采的，简单、中等、困难这个等级也是作者自己分类的</p>
-<p><img src="/2023/12/16/radarwork/image-20221201215949505.png" alt="image-20221201215949505"></p>
+<p><img src="/2022/12/16/radarwork/image-20221201215949505.png" alt="image-20221201215949505"></p>
 <h2 id="Radar-PointGNN-Graph-Based-Object-Recognition-for-Unstructured-Radar-Point-cloud-Data【2021IEEE-RadarConference】荷兰-代尔夫特理工大学"><a href="#Radar-PointGNN-Graph-Based-Object-Recognition-for-Unstructured-Radar-Point-cloud-Data【2021IEEE-RadarConference】荷兰-代尔夫特理工大学" class="headerlink" title="Radar-PointGNN: Graph Based Object Recognition for Unstructured Radar Point-cloud Data【2021IEEE RadarConference】荷兰 代尔夫特理工大学"></a>Radar-PointGNN: Graph Based Object Recognition for Unstructured Radar Point-cloud Data【2021IEEE RadarConference】荷兰 代尔夫特理工大学</h2><p>数据集： nuScenes </p>
 <p>创新点：</p>
 <p>1 在公共数据集nuScenes上评估的雷达数据的第一个已发布的多目标识别方法。</p>
@@ -32,9 +32,9 @@
 <p><strong>Method</strong>：</p>
 <p><strong>预处理：</strong></p>
 <p><strong>建图</strong>【顶点：radar detection points 边：点距离小于1m  感觉建图这边是可以优化的地方】</p>
-<p> <img src="/2023/12/16/radarwork/image-20221201220035671.png" alt="image-20221201220035671">    </p>
+<p> <img src="/2022/12/16/radarwork/image-20221201220035671.png" alt="image-20221201220035671">    </p>
 <p>有点类似于<strong>数据增强</strong>的处理：平移和旋转前五个雷达帧的雷达测量值，增加输入点云的密度。</p>
-<p><img src="/2023/12/16/radarwork/image-20221201220044846.png" alt="image-20221201220044846"></p>
+<p><img src="/2022/12/16/radarwork/image-20221201220044846.png" alt="image-20221201220044846"></p>
 <p><strong>预测decoder</strong>:</p>
 <p><strong>Loss</strong>：</p>
 <p>分类损失=杂波预测任务和类别预测任务的交叉熵损失之和</p>
@@ -53,7 +53,7 @@
 <p>Backbone：Resnet+FPN</p>
 <p>Detection Head：CNN</p>
 <p>我的想法：这篇文章使用了KPConv可变形卷积和GNN的思想，和之前看过的3DGCN的有异曲同工之妙，处理这种稀疏性数据是比固定卷积更有灵活性的。在Grid部分用了PointPillars。</p>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2023-12-16</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Workshop/" title="Workshop">Workshop </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://betterwyl.github.io/2023/12/16/radarwork/,Betterwyl,Paper reading,;" target="_blank" rel="noopener"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2023/04/30/openpcdet/" title="My note on OpenPCDet&amp;MMDet3D">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@latest/dist/Valine.min.js"></script><script>var valine = new Valine({
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-12-16</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Workshop/" title="Workshop">Workshop </a><span class="leancloud_visitors"></span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,https://betterwyl.github.io/2022/12/16/radarwork/,Betterwyl,Paper reading,;" target="_blank" rel="noopener"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2023/03/30/CS224/" title="CS224W">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2022/12/02/radar/" title="Radar">下一篇</a></li></ul></div><script src="/js/visitors.js"></script><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@latest/dist/Valine.min.js"></script><script>var valine = new Valine({
   el:'#vcomments',
   notify:false || false, 
   verify:false|| false, 
