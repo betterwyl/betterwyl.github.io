@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2023-04-30T07:12:02.786Z</updated>
+  <updated>2023-06-04T04:03:43.914Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My note on Visualization</title>
+    <link href="https://betterwyl.github.io/2023/06/03/visualization/"/>
+    <id>https://betterwyl.github.io/2023/06/03/visualization/</id>
+    <published>2023-06-03T07:45:43.000Z</published>
+    <updated>2023-06-04T04:03:43.914Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="搭建可视化环境"><a href="#搭建可视化环境" class="headerlink" title="搭建可视化环境"></a>搭建可视化环境</h2><p>在VMware上配置Ubuntu20.04【1】+ROS1-noetic【2】+python3</p><h3 id="配置指南1："><a href="#配置指南1：" class="headerlink" title="配置指南1："></a>配置指南1：</h3><p>【1】安装环境</p><p>VMware Workstation Pro+Ubuntu安装教程 <a href="https://mp.weixin.qq.com/s/vuaPF25PUVywgAA0tEvr8w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/vuaPF25PUVywgAA0tEvr8w</a></p><p>该教程环境是：ubuntu18.04+ROS1Melodic 注意：该版本只能使用python2，最好还是安装ubuntu20.04可以使用python3</p><p>完成后安装Vmware tools</p><p><a href="https://www.bilibili.com/video/BV1jL4y1H724/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1jL4y1H724/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click</a></p><p>【2】安装ROS</p><p> 1.设置安装源</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c &#39;. &#x2F;etc&#x2F;lsb-release &amp;&amp; echo &quot;deb http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;ros&#x2F;ubuntu&#x2F; $DISTRIB_CODENAME main&quot; &gt; &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;ros-latest.list&#39;</span><br></pre></td></tr></table></figure><p>2.设置密钥</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver hkp:&#x2F;&#x2F;keyserver.ubuntu.com:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116</span><br></pre></td></tr></table></figure><p>在更新之前，需要安装公钥，否则无法验证签名，命令如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654</span><br></pre></td></tr></table></figure><p>3.更新软件列表</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure><p>4.安装ROS</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ros-melodic-desktop-full</span><br></pre></td></tr></table></figure><p>5.安装完成之后初始化rosdep</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python-rosdep</span><br></pre></td></tr></table></figure><p>6.初始化rosdep</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rosdep init</span><br><span class="line">rosdep update</span><br></pre></td></tr></table></figure><p>大多数情况下，做到这一步都会报错，可能会出现如下情况：<br>···Website may be down 或者 ···ERROR: unable to process source<br>错误原因是由于 raw.githubusercontent.com 被墙，程序无法下载相应的文件导致的，正常情况下我们也无法访问该网站。</p><p>问题解决：<br>A. 下载rosdistro-master的压缩包，然后解压到主目录</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">unzip rosdistro-master.zip</span><br><span class="line">mv rosdistro-master rosdistro</span><br></pre></td></tr></table></figure><p>链接：<a href="https://pan.baidu.com/s/1z25LvAV1Z7dCTuzELqhOsA" target="_blank" rel="noopener">https://pan.baidu.com/s/1z25LvAV1Z7dCTuzELqhOsA</a><br>提取码：75r1</p><p>B. 修改 20-default.list 文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit &#x2F;etc&#x2F;ros&#x2F;rosdep&#x2F;sources.list.d&#x2F;20-default.list</span><br></pre></td></tr></table></figure><p>内容修改如下：<br>-os-specific listings first<br>yaml file:///home/xxx/rosdistro/rosdep/osx-homebrew.yaml osx<br>-generic<br>yaml file:///home/xxx/rosdistro/rosdep/base.yaml<br>yaml file:///home/xxx/rosdistro/rosdep/python.yaml<br>yaml file:///home/xxx/rosdistro/rosdep/ruby.yaml<br>gbpdistro file:///home/xxx/rosdistro/releases/fuerte.yaml fuerte<br>-newer distributions (Groovy, Hydro, …) must not be listed anymore, they are being fetched from the rosdistro index.yaml instead<br>注意：上述 xxx 需替换为自己的用户名</p><p>C. 修改 sources_list.py 文件<br>sudo gedit /usr/lib/python2.7/dist-packages/rosdep2/sources_list.py<br>注释原 DEFAULT_SOURCES_LIST_URL 一行，然后在其后添加如下一行，注意：xxx替换<br>DEFAULT_SOURCES_LIST_URL = ‘file:///home/xxx/rosdistro/rosdep/sources.list.d/20-default.list’</p><p>D. 修改 rep3.py 文件<br>sudo gedit /usr/lib/python2.7/dist-packages/rosdep2/rep3.py<br>注释原 REP3_TARGETS_URL 一行，然后在其后添加如下一行，注意：xxx替换<br>REP3_TARGETS_URL = ‘file:///home/xxx/rosdistro/releases/targets.yaml’</p><p>E. 修改 <strong>init</strong>.py 文件<br>sudo gedit /usr/lib/python2.7/dist-packages/rosdistro/<strong>init</strong>.py<br>注释原 DEFAULT_INDEX_URL 一行，然后在其后添加如下一行，注意：xxx替换<br>DEFAULT_INDEX_URL = ‘file:///home/xxx/rosdistro/index-v4.yaml’</p><p>7.重新 rosdep update</p><p>8.添加 ROS 环境变量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source &#x2F;opt&#x2F;ros&#x2F;melodic&#x2F;setup.bash&quot; &gt;&gt; ~&#x2F;.bashrc</span><br><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure><p>9.安装 rosinstall</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential</span><br></pre></td></tr></table></figure><p>10.第一次启动ROS时，需要进行环境变量配置，执行如下命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source &#x2F;opt&#x2F;ros&#x2F;melodic&#x2F;setup.bash&quot; &gt;&gt; ~&#x2F;.bashrc</span><br><span class="line">source ~&#x2F;.bashrc</span><br></pre></td></tr></table></figure><p>11.先开启三个终端，然后分别依次输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">roscore</span><br><span class="line">rosrun turtlesim turtlesim_node</span><br><span class="line">rosrun turtlesim turtle_teleop_key</span><br></pre></td></tr></table></figure><p>然后将鼠标聚焦到输入最后一个命令的窗口，通过键盘的上下左右键，分别控制乌龟的前进，后退，左转，右转。</p><h3 id="配置指南2："><a href="#配置指南2：" class="headerlink" title="配置指南2："></a>配置指南2：</h3><p>【1】同配置指南1</p><p>【2】使用一键工具，但是中途可能会报错。fishros.com</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;fishros.com&#x2F;install -O fishros &amp;&amp; bash fishros</span><br><span class="line"># ROS ---1  </span><br><span class="line"># 更换系统源，删除之前系统源 ---2</span><br><span class="line"># 选择版本 </span><br><span class="line">ubuntu版本          Ros版本</span><br><span class="line">Ubuntu18.04        Melodic</span><br><span class="line">Ubuntu20.04        Noetic</span><br><span class="line"># 可能会提示软件包依赖问题，根据提示输入，结束后测试</span><br><span class="line">roscore</span><br><span class="line"># 初始化rosdep，继续使用上次口令</span><br><span class="line"># rosdepc ---3</span><br><span class="line">rosdepc update</span><br><span class="line"># 下面是测试，打开三个终端</span><br><span class="line">roscore</span><br><span class="line">rosrun turtlesim turtlesim_node</span><br><span class="line">rosrun turtlesim turtle_teleop_key</span><br></pre></td></tr></table></figure><h2 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h2><p>学习的视频教程【该方法为建立工作区的方式】</p><p><a href="https://www.bilibili.com/video/BV1qV41167d2/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1qV41167d2/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click</a></p><p>关于使用PP-radar预测结果：evaluate的时候把save_dir=True，这样就能保存结果为txt文件，属性值如下，最后一个自带置信度。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BOX_COL_ATTR &#x3D; [&#39;type&#39;,&#39;truncated&#39;,&#39;occluded&#39;,&#39;alpha&#39;,&#39;bbox_left&#39;,&#39;bbox_top&#39;,&#39;bbox_right&#39;,&#39;bbox_bottom&#39;,&#39;height&#39;,&#39;width&#39;,&#39;length&#39;,&#39;pos_x&#39;,&#39;pos_y&#39;,&#39;pos_z&#39;, &#39;rot_y&#39;, &#39;score&#39;]</span><br></pre></td></tr></table></figure><h3 id="read-raw-dataset"><a href="#read-raw-dataset" class="headerlink" title="read raw dataset"></a>read raw dataset</h3><p>label：读入所有annotations，并设置BOX_COL_ATTR，按照设置的方式排序。</p><p>image：直接读取，使用读入的annotations在image上面画bbox（相机坐标系下）。</p><p>pointclouds数据：只选取前三个数据。4D毫米波可选：速度参数。</p><p>calib：直接读取，要把bbox通过calib转为激光雷达坐标系下的。</p><h3 id="publish-data"><a href="#publish-data" class="headerlink" title="publish data"></a>publish data</h3><p>步骤是【1】创建结点【2】发布结点</p><p> 创建结点和发布结点遵循：（中间加需要读和变换处理的代码块）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kitti_camera_pub &#x3D; rospy.Publisher(&#39;kitti_cam&#39;, Image, queue_size&#x3D;20)</span><br><span class="line">publish_camera(kitti_camera_pub, bridge, img2, bboxes, types)</span><br></pre></td></tr></table></figure><p>bbox连线方式和color的同类别对应：由于生成的pred文件中参数可能顺序不同，因此需要根据生成的顺序对其连线进行调整。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bbox连线方式：在publisher_utils.py中PRED_LINES进行调整</span><br><span class="line">color的同类别对应：DET_COLOR和PRED_COLOR</span><br></pre></td></tr></table></figure><p>添加车辆模型和辅助线【需要把文件和python代码放在同级】</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--visual</span><br><span class="line"> --src</span><br><span class="line"> --bmw</span><br><span class="line"> #使用方式</span><br><span class="line"> &#39;file:&#x2F;&#x2F;&#39; + car_model_path</span><br><span class="line"> 因为这里不是从创立工作空间开始的，因此只有file生效。</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="Workshop" scheme="https://betterwyl.github.io/tags/Workshop/"/>
+    
+  </entry>
   
   <entry>
     <title>My note on OpenPCDet&amp;MMDet3D</title>
@@ -414,31 +436,6 @@
       
       
     <summary type="html">&lt;p&gt;test&lt;br&gt;1111&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-    <category term="番茄炒鸡蛋【话很多】" scheme="https://betterwyl.github.io/tags/%E7%95%AA%E8%8C%84%E7%82%92%E9%B8%A1%E8%9B%8B%E3%80%90%E8%AF%9D%E5%BE%88%E5%A4%9A%E3%80%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>奇思妙想更新中</title>
-    <link href="https://betterwyl.github.io/2020/03/17/Forever/"/>
-    <id>https://betterwyl.github.io/2020/03/17/Forever/</id>
-    <published>2020-03-17T03:56:22.000Z</published>
-    <updated>2022-10-30T04:47:39.190Z</updated>
-    
-    <content type="html"><![CDATA[<p>——————————————————————————</p><p>“可是小时候也是同一个我，<br>用一个下午的时间看蚂蚁搬家，等石头开花，<br>小时候不期待结果，小时候哭笑都不打折。”</p><p>——————————————————————————</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;——————————————————————————&lt;/p&gt;
-&lt;p&gt;“可是小时候也是同一个我，&lt;br&gt;用一个下午的时间看蚂蚁搬家，等石头开花，&lt;br&gt;小时候不期待结果，小时候哭笑都不打折。”&lt;/p&gt;
-&lt;p&gt;——————————————————————————&lt;/p&gt;
 </summary>
       
     
