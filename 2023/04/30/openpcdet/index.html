@@ -28,6 +28,7 @@ Dataset Preparation  以KITTI数据集为例：更改数据集配置文件： to
 <p><img src="/2023/04/30/openpcdet/image-20230430150428353.png" alt="可视化"></p>
 <p>结果：</p>
 <p><img src="/2023/04/30/openpcdet/image-20230430150323635.png" alt="result"></p>
+<p>需要注意的是evaluate方法的修改~</p>
 <h1 id="MMDet3D"><a href="#MMDet3D" class="headerlink" title="MMDet3D"></a>MMDet3D</h1><h2 id="work-flow"><a href="#work-flow" class="headerlink" title="work flow"></a>work flow</h2><p><img src="/2023/04/30/openpcdet/v2-7ecc8e5e19c59a3e6682c5e3cdc34918_r.jpg" alt="workflow"></p>
 <h2 id="train"><a href="#train" class="headerlink" title="train"></a>train</h2><p> stream: batch →  backbone → neck → head [cls + reg]→  gt bbox encoder→ loss</p>
 <h3 id="backbone"><a href="#backbone" class="headerlink" title="backbone"></a>backbone</h3><p>路径：mmdetection3d/mmdet3d/models/backbones</p>
