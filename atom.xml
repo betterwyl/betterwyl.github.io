@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2023-07-25T10:06:44.958Z</updated>
+  <updated>2023-09-12T11:34:52.000Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Graph Transformer</title>
+    <link href="https://betterwyl.github.io/2023/08/27/Graph-Transformer-learning/"/>
+    <id>https://betterwyl.github.io/2023/08/27/Graph-Transformer-learning/</id>
+    <published>2023-08-27T06:45:43.000Z</published>
+    <updated>2023-09-12T11:34:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Graph-Transformer"><a href="#Graph-Transformer" class="headerlink" title="Graph Transformer"></a>Graph Transformer</h1><h2 id="Positional-and-structural-encodings"><a href="#Positional-and-structural-encodings" class="headerlink" title="Positional and structural encodings"></a>Positional and structural encodings</h2><p><strong>位置编码（PE）</strong>意在提供给定节点在空间中的位置的信息。如果两个节点在图或子图中的位置相邻，那么其位置编码应该相近。通常做法是计算一对节点之间的距离，或特征向量。</p><p>Local PE-node features-Within a cluster: 1、随机游走矩阵非对角元求和  2、节点到聚类中心距离</p><p>Global PE-node features -Within a graph  ：1、Eigenvectors of the Adjacency, Laplacian or distance matrices  2、与graph中心的聚类。3、连通成分的独特定义 4、SignNet  </p><p>Relative PE-edge features  ：1、成对距离：最短路径、核、随机游走、贪心等 或者使用全局or局部PE 。2、PEGlayer：位置编码→用于连接预测任务</p><p><strong>结构编码（SE）</strong>旨在提供一个图结构或子图结构的嵌入，以增强GNN的表达能力和泛化能力。如果两个节点拥有相同的子图结构，亦或两个图相似，那么它们的结构编码也应该相似。</p><p>Local SE-node features-m radius 【划定半径范围、相当于子图】：1、度2、随机游走矩阵对角元3、预定义一些结构</p><p>Global SE-graph features  【两张图相似则globalSE也相似】</p><p>Relative SE-edge features  【和Local SE相关的边的嵌入】</p><p><strong>1-Weisfeiler-Leman test</strong></p><p>Weisfeiler-Lehman算法在大多数图上会得到一个独一无二的特征集合，这意味着图上的每一个节点都有着独一无二的角色定位（例外在于网格，链式结构等等）。因此，对于大多数非规则的图结构，得到的特征可以作为图是否同构的判别依据——WL Test（例如两个图是否是同质的，取决于节点的排列方式）。</p><h2 id="Rethinking-Graph-Transformers-with-Spectral-Attention"><a href="#Rethinking-Graph-Transformers-with-Spectral-Attention" class="headerlink" title="Rethinking Graph Transformers with Spectral Attention"></a>Rethinking Graph Transformers with Spectral Attention</h2><p>可学习的位置编码</p><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><h3 id="Multi-Headed-Attention-MHA"><a href="#Multi-Headed-Attention-MHA" class="headerlink" title="Multi-Headed Attention (MHA)"></a>Multi-Headed Attention (MHA)</h3><p>1、 Prepare for multi-head attention：每个head 的vector表示做线性变换。</p><p>forward：</p><p>input： <code>[seq_len, batch_size, d_model]</code> or <code>[batch_size, d_model]</code></p><p>在最后一个维使用线性变换，分为多个heads</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.linear &#x3D; nn.Linear(d_model, heads * d_k, bias&#x3D;bias)</span><br><span class="line">head_shape &#x3D; x.shape[:-1] #最后一个维为：d_model</span><br><span class="line">x &#x3D; self.linear(x)</span><br><span class="line">x &#x3D; x.view(*head_shape, self.heads, self.d_k)</span><br></pre></td></tr></table></figure><p>2、MultiHeadAttention</p><p>每一个q、k、v都输入到preparationmultiheadattention的module中取准备映射数据。</p><p>计算分数：query和key</p><p>为每个head计算mask：[seq_len_q, seq_len_k, batch_size]</p><p>forward：input：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input：[query: torch.Tensor,key: torch.Tensor,value: torch.Tensor,mask: Optional[torch.Tensor] &#x3D; None]</span><br><span class="line">query、key和value的原始数据形式 [seq_len, batch_size, d_model]→[seq_len, batch_size, heads, d_k]</span><br><span class="line">计算query和key相乘的得→[seq_len, seq_len, batch_size, heads] .</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+    <category term="Workshop" scheme="https://betterwyl.github.io/tags/Workshop/"/>
+    
+  </entry>
   
   <entry>
     <title>My Work</title>
@@ -414,29 +436,6 @@
     
     
     <category term="学习记录【目标检测】" scheme="https://betterwyl.github.io/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E3%80%90%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E3%80%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test</title>
-    <link href="https://betterwyl.github.io/2020/05/19/test/"/>
-    <id>https://betterwyl.github.io/2020/05/19/test/</id>
-    <published>2020-05-19T03:56:37.000Z</published>
-    <updated>2022-11-12T07:39:12.210Z</updated>
-    
-    <content type="html"><![CDATA[<p>test<br>1111</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;test&lt;br&gt;1111&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-    <category term="番茄炒鸡蛋【话很多】" scheme="https://betterwyl.github.io/tags/%E7%95%AA%E8%8C%84%E7%82%92%E9%B8%A1%E8%9B%8B%E3%80%90%E8%AF%9D%E5%BE%88%E5%A4%9A%E3%80%91/"/>
     
   </entry>
   
