@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-06-03T03:21:55.504Z</updated>
+  <updated>2024-06-03T03:28:44.376Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>paper1</title>
-    <link href="https://betterwyl.github.io/2024/06/03/paper1/"/>
-    <id>https://betterwyl.github.io/2024/06/03/paper1/</id>
-    <published>2024-06-03T03:13:47.226Z</published>
-    <updated>2024-06-03T03:21:55.504Z</updated>
+    <title>基于 4D 毫米波雷达点云的 3D 目标检测</title>
+    <link href="https://betterwyl.github.io/2024/05/29/paper1/"/>
+    <id>https://betterwyl.github.io/2024/05/29/paper1/</id>
+    <published>2024-05-29T10:17:47.000Z</published>
+    <updated>2024-06-03T03:28:44.376Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>title: 基于 4D 毫米波雷达点云的 3D 目标检测<br>date: 2024-05-29 18:17:47<br>tags:  【project】<br>summary: 基于 4D 毫米波雷达点云的 3D 目标检测</p><ol><li>鉴于现有工作在捕捉雷达点云物理语义关联上的局限， 我们提出可学习的局部关联表示， 增强点云之间的信息流； 引入节点-关系融合感知机制， 解决现有方案对局部变换敏感的问题。</li><li>本算法填补了 graph-based 方案在 4D 成像雷达目标检测上的空白， 相比基准模型在 4D 雷达数据集上提升了 21%mAP，比肩雷达点云和摄像头融合算法。</li></ol><ul><li><input disabled type="checkbox"> 基于图神经网络的毫米波雷达点云的 3D 目标检测方法（ 202311490730.X）</li></ul><p><img src="/2024/06/03/paper1/image-20240603111745259.png" alt="image-20240603111745259"></p><p><img src="/2024/06/03/paper1/image-20240603112035905.png" alt="image-20240603112035905"></p><p><img src="/2024/06/03/paper1/image-20240603112117316.png" alt="image-20240603112117316"></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol><li>鉴于现有工作在捕捉雷达点云物理语义关联上的局限， 我们提出可学习的局部关联表示， 增强点云之间的信息流； 引入节点-关系融合感知机制， 解决现有方案对局部变换敏感的问题。</li><li>本算法填补了 graph-based 方案在 4D 成像雷达目标检测上的空白， 相比基准模型在 4D 雷达数据集上提升了 21%mAP，比肩雷达点云和摄像头融合算法。</li></ol><ul><li><input disabled type="checkbox"> 基于图神经网络的毫米波雷达点云的 3D 目标检测方法（ 202311490730.X）</li></ul><img src="/2024/05/29/paper1/image-20240603111745259.png" alt="image-20240603111745259" style="zoom: 33%;"><img src="/2024/05/29/paper1/image-20240603112035905.png" alt="image-20240603112035905" style="zoom: 67%;"><img src="/2024/05/29/paper1/image-20240603112117316.png" alt="image-20240603112117316" style="zoom: 50%;">]]></content>
     
     
       
@@ -33,6 +33,8 @@
     
     
     
+    
+    <category term="【project】" scheme="https://betterwyl.github.io/tags/%E3%80%90project%E3%80%91/"/>
     
   </entry>
   
