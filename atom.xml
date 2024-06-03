@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-06-03T03:28:44.376Z</updated>
+  <updated>2024-06-03T03:34:49.693Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://betterwyl.github.io/2024/05/29/paper1/"/>
     <id>https://betterwyl.github.io/2024/05/29/paper1/</id>
     <published>2024-05-29T10:17:47.000Z</published>
-    <updated>2024-06-03T03:28:44.376Z</updated>
+    <updated>2024-06-03T03:34:49.693Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol><li>鉴于现有工作在捕捉雷达点云物理语义关联上的局限， 我们提出可学习的局部关联表示， 增强点云之间的信息流； 引入节点-关系融合感知机制， 解决现有方案对局部变换敏感的问题。</li><li>本算法填补了 graph-based 方案在 4D 成像雷达目标检测上的空白， 相比基准模型在 4D 雷达数据集上提升了 21%mAP，比肩雷达点云和摄像头融合算法。</li></ol><ul><li><input disabled type="checkbox"> 基于图神经网络的毫米波雷达点云的 3D 目标检测方法（ 202311490730.X）</li></ul><img src="/2024/05/29/paper1/image-20240603111745259.png" alt="image-20240603111745259" style="zoom: 33%;"><img src="/2024/05/29/paper1/image-20240603112035905.png" alt="image-20240603112035905" style="zoom: 67%;"><img src="/2024/05/29/paper1/image-20240603112117316.png" alt="image-20240603112117316" style="zoom: 50%;">]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol><li>鉴于现有工作在捕捉雷达点云物理语义关联上的局限， 我们提出可学习的局部关联表示， 增强点云之间的信息流； 引入节点-关系融合感知机制， 解决现有方案对局部变换敏感的问题。</li><li>本算法填补了 graph-based 方案在 4D 成像雷达目标检测上的空白， 相比基准模型在 4D 雷达数据集上提升了 21%mAP，比肩雷达点云和摄像头融合算法。</li></ol><ul><li><input disabled type="checkbox"> 基于图神经网络的毫米波雷达点云的 3D 目标检测方法（ 202311490730.X）</li></ul><p>节点-关系融合感知机制：</p><p>At the beginning of the training, the target nodes (highlighted in the red box area) and background nodes have similar states, with close similarity between the nodes, resulting in a lack of clear distinction.<br>A strong correlation is observed among the target nodes, while the correlation between the target nodes and background nodes gradually weakens during the training process.<br>By the end of the training, RAGNN demonstrates a tendency to separate instances already, providing a good basis for the detection head.</p><img src="/2024/05/29/paper1/image-20240603112117316.png" alt="image-20240603112117316" style="zoom: 50%;"><p>结果可视化：</p><img src="/2024/05/29/paper1/image-20240603112035905.png" alt="image-20240603112035905" style="zoom: 80%;">]]></content>
     
     
       
