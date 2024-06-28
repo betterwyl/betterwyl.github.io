@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-06-28T08:55:51.072Z</updated>
+  <updated>2024-06-28T08:59:19.286Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://betterwyl.github.io/2024/06/28/paper3/"/>
     <id>https://betterwyl.github.io/2024/06/28/paper3/</id>
     <published>2024-06-28T10:17:47.000Z</published>
-    <updated>2024-06-28T08:55:51.072Z</updated>
+    <updated>2024-06-28T08:59:19.286Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>基于opencv的视频防抖demo</p><p>稳像前后</p><p>&lt;video src=”paper3/video_cat.mp4 position= “absolute” width=”100%” height=”100%” controls=”controls”&gt;</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>基于opencv的视频防抖demo</p><p>稳像前后</p> <video src="paper3/video_cat.mp4 position= " absolute" width="100%" height="100%" controls="controls"></video> ]]></content>
     
     
       
