@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-06-29T14:11:53.152Z</updated>
+  <updated>2024-06-29T14:15:08.687Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://betterwyl.github.io/2024/06/28/paper3/"/>
     <id>https://betterwyl.github.io/2024/06/28/paper3/</id>
     <published>2024-06-28T10:17:47.000Z</published>
-    <updated>2024-06-29T14:11:53.152Z</updated>
+    <updated>2024-06-29T14:15:08.687Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>基于opencv的视频防抖demo</p><p>稳像可视化</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style&#x3D;&quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&quot;&gt;&lt;iframe src&#x3D;&#39;&#x2F;&#x2F;player.bilibili.com&#x2F;player.html?bvid&#x3D;BV1uShTerEXD&amp;cid&#x3D;500001599980044&amp;p&#x3D;1&amp;share_source&#x3D;copy_web&#39; scrolling&#x3D;&#39;no&#39; border&#x3D;&#39;0&#39; frameborder&#x3D;&#39;no&#39; framespacing&#x3D;&#39;0&#39; allowfullscreen&#x3D;&#39;true&#39;&gt;&lt;&#x2F;iframe&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><p>稳像可视化</p>]]></content>
     
     
       
