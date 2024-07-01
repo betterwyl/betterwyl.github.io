@@ -65,9 +65,9 @@
     <link href="https://betterwyl.github.io/2024/05/29/paper2/"/>
     <id>https://betterwyl.github.io/2024/05/29/paper2/</id>
     <published>2024-05-29T10:17:47.000Z</published>
-    <updated>2024-06-03T03:45:00.232Z</updated>
+    <updated>2024-07-01T14:00:50.340Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本项目基于<strong>FMCW毫米波雷达ADC信号</strong>提出一种<strong>双分支的目标识别算法</strong>，可实现高精度目标检测和分类。算法能够有效提取雷达信号中的目标特征参数（距离、速度和角度），并通过时频分析和深度学习算法实现了对复杂场景下目标的鲁棒识别，<strong>在Precision上达到92.3%</strong>，相比基准模型<strong>在Recall上提升了38%</strong>。</p><p>RA heatmap and micro-Dopplerr  heatmap：</p><p><img src="/2024/05/29/paper2/image-20240603114233373.png" alt="image-20240603114233373"></p><p><img src="/2024/05/29/paper2/image-20240603114405928.png" alt="image-20240603114405928"></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本项目基于<strong>FMCW毫米波雷达ADC信号</strong>提出一种<strong>双分支的目标识别算法</strong>，可实现高精度目标检测和分类。算法能够有效提取雷达信号中的目标特征参数（距离、速度和角度），并通过时频分析和深度学习算法实现了对复杂场景下目标的鲁棒识别，<strong>在Precision上达到92.3%</strong>，相比基准模型<strong>在Recall上提升了38%</strong>。</p><p>预处理过程：</p><p>接收信号与本地参考信号进行混频产生中频后通过ADC进行数字化，再采用如下3D-FFT算法进行处理，分别估计距离、多普勒速度和角度的频谱。</p><p><img src="/2024/05/29/paper2/image-20240701215258230.png" alt="image-20240701215258230"></p><p>算法流程图</p><p><img src="/2024/05/29/paper2/image-20240701220003512.png" alt="image-20240701220003512"></p><p>RA heatmap and micro-Dopplerr  heatmap：</p><p><img src="/2024/05/29/paper2/image-20240603114405928.png" alt="image-20240603114405928"></p><p><img src="/2024/05/29/paper2/image-20240603114233373.png" alt="image-20240603114233373"></p>]]></content>
     
     
       
