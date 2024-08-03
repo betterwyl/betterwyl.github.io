@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-07-01T02:00:45.054Z</updated>
+  <updated>2024-08-03T03:11:46.382Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://betterwyl.github.io/2024/06/28/paper3/"/>
     <id>https://betterwyl.github.io/2024/06/28/paper3/</id>
     <published>2024-06-28T10:17:47.000Z</published>
-    <updated>2024-07-01T02:00:45.054Z</updated>
+    <updated>2024-08-03T03:11:46.382Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><p>稳像可视化</p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>稳像可视化：基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><p>时间同步：</p><p>同步点可视化：</p><p><img src="/2024/06/28/paper3/Figure_2.png" alt="Figure_2.png"></p><p><img src="/2024/06/28/paper3/Figure_3.png" alt="Figure_3.png"></p>]]></content>
     
     
       
@@ -43,9 +43,9 @@
     <link href="https://betterwyl.github.io/2024/05/29/paper1/"/>
     <id>https://betterwyl.github.io/2024/05/29/paper1/</id>
     <published>2024-05-29T10:17:47.000Z</published>
-    <updated>2024-06-03T03:34:49.693Z</updated>
+    <updated>2024-08-03T03:09:17.109Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ol><li>鉴于现有工作在捕捉雷达点云物理语义关联上的局限， 我们提出可学习的局部关联表示， 增强点云之间的信息流； 引入节点-关系融合感知机制， 解决现有方案对局部变换敏感的问题。</li><li>本算法填补了 graph-based 方案在 4D 成像雷达目标检测上的空白， 相比基准模型在 4D 雷达数据集上提升了 21%mAP，比肩雷达点云和摄像头融合算法。</li></ol><ul><li><input disabled type="checkbox"> 基于图神经网络的毫米波雷达点云的 3D 目标检测方法（ 202311490730.X）</li></ul><p>节点-关系融合感知机制：</p><p>At the beginning of the training, the target nodes (highlighted in the red box area) and background nodes have similar states, with close similarity between the nodes, resulting in a lack of clear distinction.<br>A strong correlation is observed among the target nodes, while the correlation between the target nodes and background nodes gradually weakens during the training process.<br>By the end of the training, RAGNN demonstrates a tendency to separate instances already, providing a good basis for the detection head.</p><img src="/2024/05/29/paper1/image-20240603112117316.png" alt="image-20240603112117316" style="zoom: 50%;"><p>结果可视化：</p><img src="/2024/05/29/paper1/image-20240603112035905.png" alt="image-20240603112035905" style="zoom: 80%;">]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>Motivation</strong></p><p><img src="/2024/05/29/paper1/image-20240803105946707.png" alt="image-20240803105946707"></p><p><strong>研究内容1：基于关联感知的4D毫米波雷达点云的3D目标检测算法</strong></p><p><img src="/2024/05/29/paper1/image-20240803110507607.png" alt="image-20240803110507607"></p><ol><li>鉴于现有工作在捕捉雷达点云物理语义关联上的局限， 我们提出可学习的局部关联表示， 增强点云之间的信息流； 引入节点-关系融合感知机制， 解决现有方案对局部变换敏感的问题。</li><li>本算法填补了 graph-based 方案在 4D 成像雷达目标检测上的空白， 相比基准模型在 4D 雷达数据集上提升了 21%mAP，比肩雷达点云和摄像头融合算法。</li></ol><p><u>基于图神经网络的毫米波雷达点云的 3D 目标检测方法（ 202311490730.X）</u></p><p>对关联感知机制的探索：</p><img src="/2024/05/29/paper1/image-20240603112117316.png" alt="image-20240603112117316" style="zoom: 50%;"><p><strong>研究内容2：基于对比学习的全稀疏4D毫米波雷达点云的3D目标检测算法</strong></p><ol><li><p>引入帧内和帧间的对比学习，以捕捉毫米波雷达点云样本之间的全局语义关联。</p></li><li><p>为提高处理速度和减少稠密计算资源在稀疏数据上的浪费，设计自适应特征传播的全稀疏网络，实现直接由体素到物体的直接检测。</p></li></ol><p><img src="/2024/05/29/paper1/image-20240803110630666.png" alt="image-20240803110630666"></p><p>结果：</p><img src="/2024/05/29/paper1/image-20240603112035905.png" alt="image-20240603112035905" style="zoom: 80%;">]]></content>
     
     
       
@@ -65,9 +65,9 @@
     <link href="https://betterwyl.github.io/2024/05/29/paper2/"/>
     <id>https://betterwyl.github.io/2024/05/29/paper2/</id>
     <published>2024-05-29T10:17:47.000Z</published>
-    <updated>2024-07-01T14:00:50.340Z</updated>
+    <updated>2024-08-03T03:11:16.150Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本项目基于<strong>FMCW毫米波雷达ADC信号</strong>提出一种<strong>双分支的目标识别算法</strong>，可实现高精度目标检测和分类。算法能够有效提取雷达信号中的目标特征参数（距离、速度和角度），并通过时频分析和深度学习算法实现了对复杂场景下目标的鲁棒识别，<strong>在Precision上达到92.3%</strong>，相比基准模型<strong>在Recall上提升了38%</strong>。</p><p>预处理过程：</p><p>接收信号与本地参考信号进行混频产生中频后通过ADC进行数字化，再采用如下3D-FFT算法进行处理，分别估计距离、多普勒速度和角度的频谱。</p><p><img src="/2024/05/29/paper2/image-20240701215258230.png" alt="image-20240701215258230"></p><p>算法流程图</p><p><img src="/2024/05/29/paper2/image-20240701220003512.png" alt="image-20240701220003512"></p><p>RA heatmap and micro-Dopplerr  heatmap：</p><p><img src="/2024/05/29/paper2/image-20240603114405928.png" alt="image-20240603114405928"></p><p><img src="/2024/05/29/paper2/image-20240603114233373.png" alt="image-20240603114233373"></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本项目基于<strong>FMCW毫米波雷达ADC信号</strong>提出一种<strong>双分支的目标识别算法</strong>，可实现高精度目标检测和分类。算法能够有效提取雷达信号中的目标特征参数（距离、速度和角度），并通过时频分析和深度学习算法实现了对复杂场景下目标的鲁棒识别，<strong>在Precision上达到92.3%</strong>，相比基准模型<strong>在Recall上提升了38%</strong>。</p><p>预处理过程：</p><p>接收信号与本地参考信号进行混频产生中频后通过ADC进行数字化，再采用如下3D-FFT算法进行处理，分别估计距离、多普勒速度和角度的频谱。</p><p><img src="/2024/05/29/paper2/image-20240701215258230.png" alt="image-20240701215258230"></p><p>算法流程图</p><p><img src="/2024/05/29/paper2/image-20240701220003512.png" alt="image-20240701220003512"></p><p>RA heatmap and micro-Dopplerr  heatmap：</p><p><img src="/2024/05/29/paper2/image-20240603114405928.png" alt="image-20240603114405928"></p><p><img src="/2024/05/29/paper2/image-20240603114233373.png" alt="image-20240603114233373"></p><p>相关成果在开源数据集RADIal的可视化：</p><p><img src="/2024/05/29/paper2/image-20240803111003283.png" alt="image-20240803111003283"></p>]]></content>
     
     
       
