@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-08-03T03:11:46.382Z</updated>
+  <updated>2024-08-03T03:15:55.821Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://betterwyl.github.io/2024/06/28/paper3/"/>
     <id>https://betterwyl.github.io/2024/06/28/paper3/</id>
     <published>2024-06-28T10:17:47.000Z</published>
-    <updated>2024-08-03T03:11:46.382Z</updated>
+    <updated>2024-08-03T03:15:55.821Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>稳像可视化：基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><p>时间同步：</p><p>同步点可视化：</p><p><img src="/2024/06/28/paper3/Figure_2.png" alt="Figure_2.png"></p><p><img src="/2024/06/28/paper3/Figure_3.png" alt="Figure_3.png"></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>稳像可视化：基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><p>时间同步：</p><p>同步点可视化：</p><img src="/2024/06/28/paper3/Figure_2.png" alt="Figure_2.png" style="zoom:50%;"><img src="/2024/06/28/paper3/Figure_3.png" alt="Figure_3.png" style="zoom:50%;">]]></content>
     
     
       
