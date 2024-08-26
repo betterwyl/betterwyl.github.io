@@ -6,7 +6,7 @@
   <link href="https://betterwyl.github.io/atom.xml" rel="self"/>
   
   <link href="https://betterwyl.github.io/"/>
-  <updated>2024-08-08T14:04:28.184Z</updated>
+  <updated>2024-08-26T02:47:12.603Z</updated>
   <id>https://betterwyl.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://betterwyl.github.io/2024/06/28/paper3/"/>
     <id>https://betterwyl.github.io/2024/06/28/paper3/</id>
     <published>2024-06-28T10:17:47.000Z</published>
-    <updated>2024-08-08T14:04:28.184Z</updated>
+    <updated>2024-08-26T02:47:12.603Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>稳像可视化：基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><p>时间同步：</p><p>同步点可视化：</p><img src="/2024/06/28/paper3/1.png" alt="1.png" style="zoom:50%;">]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="基于opencv的视频防抖demo"><a href="#基于opencv的视频防抖demo" class="headerlink" title="基于opencv的视频防抖demo"></a>基于opencv的视频防抖demo</h3><p>稳像可视化：基于opencv的视频防抖demo</p><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112700277393016&bvid=BV1uShTerEXD&cid=500001599980044&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe><h3 id="时间同步："><a href="#时间同步：" class="headerlink" title="时间同步："></a>时间同步：</h3><p>方案一：效率优先</p><p>同步点可视化</p><img src="/2024/06/28/paper3/fast.png" alt="nihe_curve.png" style="zoom:50%;"><p>误差拟合曲线：</p><img src="/2024/06/28/paper3/nihe_curve.png" alt="nihe_curve.png" style="zoom:50%;"><p>方案二：精度优先</p><p>同步点可视化：</p><img src="/2024/06/28/paper3/nihe_curve1.png" alt="nihe_curve.png" style="zoom:50%;"><p>误差拟合曲线：</p><img src="/2024/06/28/paper3/better.png" alt="nihe_curve.png" style="zoom:50%;">]]></content>
     
     
       
@@ -61,13 +61,13 @@
   </entry>
   
   <entry>
-    <title>基于原始毫米波雷达数据的目标识别</title>
+    <title>基于原始毫米波雷达数据的目标识别和点云生成</title>
     <link href="https://betterwyl.github.io/2024/05/29/paper2/"/>
     <id>https://betterwyl.github.io/2024/05/29/paper2/</id>
     <published>2024-05-29T10:17:47.000Z</published>
-    <updated>2024-08-03T03:11:16.150Z</updated>
+    <updated>2024-08-24T10:34:05.410Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本项目基于<strong>FMCW毫米波雷达ADC信号</strong>提出一种<strong>双分支的目标识别算法</strong>，可实现高精度目标检测和分类。算法能够有效提取雷达信号中的目标特征参数（距离、速度和角度），并通过时频分析和深度学习算法实现了对复杂场景下目标的鲁棒识别，<strong>在Precision上达到92.3%</strong>，相比基准模型<strong>在Recall上提升了38%</strong>。</p><p>预处理过程：</p><p>接收信号与本地参考信号进行混频产生中频后通过ADC进行数字化，再采用如下3D-FFT算法进行处理，分别估计距离、多普勒速度和角度的频谱。</p><p><img src="/2024/05/29/paper2/image-20240701215258230.png" alt="image-20240701215258230"></p><p>算法流程图</p><p><img src="/2024/05/29/paper2/image-20240701220003512.png" alt="image-20240701220003512"></p><p>RA heatmap and micro-Dopplerr  heatmap：</p><p><img src="/2024/05/29/paper2/image-20240603114405928.png" alt="image-20240603114405928"></p><p><img src="/2024/05/29/paper2/image-20240603114233373.png" alt="image-20240603114233373"></p><p>相关成果在开源数据集RADIal的可视化：</p><p><img src="/2024/05/29/paper2/image-20240803111003283.png" alt="image-20240803111003283"></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>本项目基于<strong>FMCW毫米波雷达ADC信号</strong>提出一种<strong>双分支的目标识别算法</strong>，可实现高精度目标检测和分类。算法能够有效提取雷达信号中的目标特征参数（距离、速度和角度），并通过时频分析和深度学习算法实现了对复杂场景下目标的鲁棒识别，<strong>在Precision上达到92.3%</strong>，相比基准模型<strong>在Recall上提升了38%</strong>。</p><p>预处理过程：</p><p>接收信号与本地参考信号进行混频产生中频后通过ADC进行数字化，再采用如下3D-FFT算法进行处理，分别估计距离、多普勒速度和角度的频谱。</p><p><img src="/2024/05/29/paper2/image-20240701215258230.png" alt="image-20240701215258230"></p><p>算法流程图</p><p><img src="/2024/05/29/paper2/image-20240701220003512.png" alt="image-20240701220003512"></p><p>micro-Dopplerr  heatmap和RA heatmap可视化：</p><p><img src="/2024/05/29/paper2/image-20240603114405928.png" alt="image-20240603114405928"></p><p><img src="/2024/05/29/paper2/image-20240603114233373.png" alt="image-20240603114233373"></p><p>生成点云图一览</p><p><img src="/2024/05/29/paper2/pc.png" alt="image-20240803111003283"></p>]]></content>
     
     
       
